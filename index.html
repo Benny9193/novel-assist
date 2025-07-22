@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Novel Workspace</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Top Bar -->
+  <header class="app-header flex justify-between items-center px-16 py-8">
+    <h1 class="app-title h3">Novel Workspace</h1>
+    <div class="flex items-center gap-8">
+      <input id="globalSearch" type="search" class="form-control" placeholder="Search…" aria-label="Search" />
+      <button id="themeToggle" class="btn btn--secondary" aria-pressed="false" title="Toggle dark / light mode">🌗</button>
+    </div>
+  </header>
+
+  <div class="app-body flex">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <nav aria-label="Primary">
+        <ul class="nav-list flex flex-col gap-4 py-16 px-8">
+          <li><button class="nav-link btn btn--outline btn--full-width" data-section="dashboard">Dashboard</button></li>
+          <li><button class="nav-link btn btn--outline btn--full-width" data-section="projects">Projects</button></li>
+          <li><button class="nav-link btn btn--outline btn--full-width" data-section="writer">Writer</button></li>
+          <li><button class="nav-link btn btn--outline btn--full-width" data-section="characters">Characters</button></li>
+          <li><button class="nav-link btn btn--outline btn--full-width" data-section="plot">Plot</button></li>
+          <li><button class="nav-link btn btn--outline btn--full-width" data-section="notes">Notes</button></li>
+          <li><button class="nav-link btn btn--outline btn--full-width" data-section="export">Export</button></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main flex-1 px-16 py-16">
+      <!-- DASHBOARD -->
+      <section id="dashboard" class="section" aria-labelledby="dashHeading">
+        <h2 id="dashHeading" class="h2 mb-8">Dashboard</h2>
+        <div id="dashboardContent" class="flex flex-col gap-16"></div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="section hidden" aria-labelledby="projectsHeading">
+        <div class="flex justify-between items-center mb-8">
+          <h2 id="projectsHeading" class="h2">Projects</h2>
+          <button id="newProjectBtn" class="btn btn--primary btn--sm">+ New Project</button>
+        </div>
+        <div id="projectGrid" class="flex flex-col gap-16"></div>
+      </section>
+
+      <!-- WRITER -->
+      <section id="writer" class="section hidden" aria-labelledby="writerHeading">
+        <div class="flex justify-between items-center mb-8">
+          <h2 id="writerHeading" class="h2">Writer</h2>
+          <div class="flex gap-8">
+            <button id="focusModeBtn" class="btn btn--secondary btn--sm">Focus Mode</button>
+            <select id="chapterSelect" class="form-control"></select>
+          </div>
+        </div>
+        <textarea id="editor" class="form-control writer__textarea" aria-label="Writing area"></textarea>
+        <div class="flex justify-between items-center mt-8">
+          <div id="wordCountDisplay" class="status status--info">0 words</div>
+          <div class="progress" aria-label="Daily goal progress" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+            <div class="progress__bar" style="width:0%"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CHARACTERS -->
+      <section id="characters" class="section hidden" aria-labelledby="charactersHeading">
+        <h2 id="charactersHeading" class="h2 mb-8">Characters</h2>
+        <div class="flex flex-col gap-16" id="characterList"></div>
+        <dialog id="characterDialog" class="card"></dialog>
+      </section>
+
+      <!-- PLOT -->
+      <section id="plot" class="section hidden" aria-labelledby="plotHeading">
+        <h2 id="plotHeading" class="h2 mb-8">Plot Timeline</h2>
+        <div id="plotTimeline" class="plot-timeline flex gap-16 overflow-auto py-8"></div>
+      </section>
+
+      <!-- NOTES -->
+      <section id="notes" class="section hidden" aria-labelledby="notesHeading">
+        <div class="flex justify-between items-center mb-8">
+          <h2 id="notesHeading" class="h2">Notes</h2>
+          <button id="newNoteBtn" class="btn btn--primary btn--sm">+ New Note</button>
+        </div>
+        <div id="notesList" class="flex flex-col gap-16"></div>
+      </section>
+
+      <!-- EXPORT -->
+      <section id="export" class="section hidden" aria-labelledby="exportHeading">
+        <h2 id="exportHeading" class="h2 mb-8">Export & Backup</h2>
+        <div class="flex flex-col gap-16">
+          <button id="exportCurrentBtn" class="btn btn--primary btn--lg">Export Current Project (JSON)</button>
+          <button id="backupAllBtn" class="btn btn--outline btn--lg">Backup All Projects (TXT)</button>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
